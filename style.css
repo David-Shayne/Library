@@ -15,9 +15,10 @@
 	--text-size-large: 1.5rem;
 	--text-size-heading: 3rem;
 	--primary-color: #003049;
-	--primary-light-color: #84bcdf;
+	--primary-light-color: #b6e3ff;
 	--secondary-color: #fdf0d5;
 	--warning-color: #780000;
+	--warning-color-light: #ffc3c3;
 }
 
 body {
@@ -33,14 +34,6 @@ button {
 	border: none;
 	border-radius: 4px;
 	color: white;
-}
-
-.delete-btn {
-	background-color: var(--warning-color);
-}
-
-.toggle-read-btn {
-	background-color: var(--primary-color);
 }
 
 h1 {
@@ -66,15 +59,22 @@ div[hide="true"] {
 		padding: var(--spacing-small) var(--spacing-large);
 		font-weight: 600;
 		margin-top: var(--spacing-medium);
+
+		&:hover {
+			cursor: pointer;
+			background-color: var(--primary-light-color);
+			color: black;
+		}
 	}
 }
 
 .books-container {
 	margin: 0 auto;
 	margin-top: var(--spacing-large);
-	max-width: 60vw;
+	width: 75vw;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, 400px);
+	justify-content: center;
 	gap: var(--spacing-large);
 }
 
@@ -110,7 +110,7 @@ div[hide="true"] {
 }
 
 .is-read-display[read="true"] {
-	background-color: var(--secondary-color);
+	background-color: var(--primary-light-color);
 }
 
 .is-read-display[read="false"] {
@@ -129,6 +129,24 @@ div[hide="true"] {
 	justify-content: space-between;
 	gap: 5%;
 
+	.delete-btn {
+		background-color: var(--warning-color);
+		&:hover {
+			cursor: pointer;
+			background-color: var(--warning-color-light);
+			color: black;
+		}
+	}
+
+	.toggle-read-btn {
+		background-color: var(--primary-color);
+		&:hover {
+			cursor: pointer;
+			background-color: var(--primary-light-color);
+			color: black;
+		}
+	}
+
 	> button {
 		font-size: var(--text-size-small);
 		font-weight: 600;
@@ -137,6 +155,7 @@ div[hide="true"] {
 	}
 }
 
+/* MODAL */
 .new-book-modal {
 	height: 100vh;
 	width: 100vw;
