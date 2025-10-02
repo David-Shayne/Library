@@ -31,7 +31,7 @@ addBookToLibrary(
 
 addBookToLibrary(
 	[
-		"Fascism: A general guide",
+		"Fascism",
 		"Carl Marx",
 		"A book about the most notorious form of governmental control on this planet: fascism",
 		false,
@@ -39,4 +39,80 @@ addBookToLibrary(
 	myLibrary
 );
 
-console.log(myLibrary);
+//////////////////
+////////////////
+///////////
+
+//Adding a book to the DOM
+let booksContainerEle = document.getElementById("books-container");
+
+//Utility function to make DRY elements
+function createElement(type, className, textContent) {
+	let element = document.createElement(type);
+	element.className = className;
+	textContent ? (element.textContent = textContent) : null;
+
+	return element;
+}
+
+//Takes in a book oject and creates an node
+function createBookCardElement(book) {
+	let bookCardEle = createElement("div", "book-card");
+	bookCardEle.id = book.id;
+	let cardHeaderEle = createElement("div", "card-header");
+	let titleEle = createElement("p", "title", `${book.title} - `);
+	let authorEle = createElement("span", "author", book.author);
+
+	titleEle.append(authorEle);
+	let isReadEle = createElement("p", "is-read-display", book.isRead ? "Read" : "Not Read");
+
+	cardHeaderEle.append(titleEle, isReadEle);
+
+	let descHeaderContainerEle = createElement("div");
+
+	let descEle = createElement("p", "desc", book.description);
+	descHeaderContainerEle.append(cardHeaderEle, descEle);
+
+	let actionBtnsEle = createElement("div", "action-btns");
+	let deleteBtn = createElement("button", "delete-btn", "Delete");
+	deleteBtn.setAttribute("delete-id", book.id);
+	let toggleReadBtn = createElement("button", "toggle-read-btn", "Toggle Read");
+
+	actionBtnsEle.append(deleteBtn, toggleReadBtn);
+
+	bookCardEle.append(descHeaderContainerEle, actionBtnsEle);
+	return bookCardEle;
+}
+
+//Removes the book object from the library
+function deleteBook(id, library) {
+	let bookIndex = library.findIndex((book) => book.id === id);
+	library.splice(bookIndex, 1);
+}
+
+//Deletes all card elements, then re-creates them and adds them with updates database
+function updateBookElements(library) {
+	let currentBookCards = document.querySelectorAll(".book-card");
+	currentBookCards.forEach((card) => {
+		card.remove();
+	});
+
+	library.forEach((book) => {
+		booksContainerEle.append(createBookCardElement(book));
+	});
+}
+
+updateBookElements(myLibrary);
+
+//Delete button functionality
+booksContainerEle.addEventListener("click", (e) => {
+	if (!e.target.className === "delete-btn") {
+		return;
+	}
+
+	//Remove the book from the library
+	let id = e.target.getAttribute("delete-id");
+	deleteBook(id, myLibrary);
+
+	updateBookElements(myLibrary);
+});
