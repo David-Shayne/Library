@@ -39,9 +39,9 @@ addBookToLibrary(
 	myLibrary
 );
 
-//////////////////
-////////////////
-///////////
+////////////////////
+// FUNCTIONALITY //
+///////////////////
 
 let booksContainerEle = document.getElementById("books-container");
 
@@ -85,12 +85,7 @@ function createBookCardElement(book) {
 	return bookCardEle;
 }
 
-//Removes the book object from the library
-function deleteBook(id, library) {
-	let bookIndex = library.findIndex((book) => book.id === id);
-	library.splice(bookIndex, 1);
-}
-
+//Action buttons functionality
 //Deletes all card elements, then re-creates them and adds them with updates database
 function updateBookElements(library) {
 	let currentBookCards = document.querySelectorAll(".book-card");
@@ -110,7 +105,12 @@ function toggleIsRead(id, library) {
 	updateBookElements(library);
 }
 
-//Delete button functionality
+//Removes the book object from the library
+function deleteBook(id, library) {
+	let bookIndex = library.findIndex((book) => book.id === id);
+	library.splice(bookIndex, 1);
+}
+
 booksContainerEle.addEventListener("click", (e) => {
 	if (e.target.className === "delete-btn") {
 		//Remove the book from the library and update
@@ -120,23 +120,22 @@ booksContainerEle.addEventListener("click", (e) => {
 	}
 });
 
-//Toggle read functionality
 booksContainerEle.addEventListener("click", (e) => {
 	if (e.target.className === "toggle-read-btn") {
 		toggleIsRead(e.target.getAttribute("book-id"), myLibrary);
 	}
 });
 
+//Open and close Modal
 function toggleModalVis() {
 	document.getElementById("new-book-modal").toggleAttribute("hide");
 }
-//Un-hide new book modal form
+
 let addBookBtnEle = document.getElementById("add-book-btn");
 addBookBtnEle.addEventListener("click", (e) => {
 	toggleModalVis();
 });
 
-//Close Modal
 let closeModalEle = document.getElementById("close-modal-btn");
 closeModalEle.addEventListener("click", (e) => {
 	toggleModalVis();
