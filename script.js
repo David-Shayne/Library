@@ -156,6 +156,9 @@ formEle.addEventListener("submit", (e) => {
 	let title = data.get("title");
 	let isRead = data.get("isRead");
 
+	//Convert to boolean
+	isRead = isRead === "true" ? true : false;
+
 	addBookToLibrary([title, author, desc, isRead], myLibrary);
 	updateBookElements(myLibrary);
 	toggleModalVis();
