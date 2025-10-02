@@ -50,6 +50,17 @@ h1 {
 	height: 100vh;
 }
 
+.header {
+	justify-content: center;
+
+	button {
+		background-color: green;
+		padding: var(--spacing-small) var(--spacing-large);
+		font-weight: 600;
+		margin-top: var(--spacing-medium);
+	}
+}
+
 .books-container {
 	margin: 0 auto;
 	margin-top: var(--spacing-large);
