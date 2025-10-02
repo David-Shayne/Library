@@ -145,3 +145,18 @@ closeModalEle.addEventListener("click", (e) => {
 window.addEventListener("load", () => {
 	updateBookElements(myLibrary);
 });
+
+let formEle = document.querySelector("form");
+formEle.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	let data = new FormData(e.target);
+	let author = data.get("author");
+	let desc = data.get("desc");
+	let title = data.get("title");
+	let isRead = data.get("isRead");
+
+	addBookToLibrary([title, author, desc, isRead], myLibrary);
+	updateBookElements(myLibrary);
+	toggleModalVis();
+});
