@@ -109,10 +109,12 @@ h1 {
 .action-btns {
 	display: flex;
 	justify-content: space-between;
+	gap: 5%;
 
 	> button {
 		font-size: var(--text-size-small);
 		font-weight: 600;
 		padding: 8px var(--spacing-medium);
+		flex: 1 1 0;
 	}
 }
