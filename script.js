@@ -43,7 +43,6 @@ addBookToLibrary(
 ////////////////
 ///////////
 
-//Adding a book to the DOM
 let booksContainerEle = document.getElementById("books-container");
 
 //Utility function to make DRY elements
@@ -65,6 +64,7 @@ function createBookCardElement(book) {
 
 	titleEle.append(authorEle);
 	let isReadEle = createElement("p", "is-read-display", book.isRead ? "Read" : "Not Read");
+	isReadEle.setAttribute("read", book.isRead);
 
 	cardHeaderEle.append(titleEle, isReadEle);
 
@@ -110,8 +110,6 @@ function toggleIsRead(id, library) {
 	updateBookElements(library);
 }
 
-updateBookElements(myLibrary);
-
 //Delete button functionality
 booksContainerEle.addEventListener("click", (e) => {
 	if (e.target.className === "delete-btn") {
@@ -127,4 +125,8 @@ booksContainerEle.addEventListener("click", (e) => {
 	if (e.target.className === "toggle-read-btn") {
 		toggleIsRead(e.target.getAttribute("book-id"), myLibrary);
 	}
+});
+
+window.addEventListener("load", () => {
+	updateBookElements(myLibrary);
 });

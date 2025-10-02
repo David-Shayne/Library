@@ -96,10 +96,17 @@ h1 {
 
 .is-read-display {
 	font-size: 0.75rem;
-	background-color: rgb(143, 255, 218);
 	padding: 6px var(--spacing-small);
 	border-radius: 8px;
 	width: max-content;
+}
+
+.is-read-display[read="true"] {
+	background-color: rgb(143, 255, 218);
+}
+
+.is-read-display[read="false"] {
+	background-color: lightcoral;
 }
 
 .desc {
