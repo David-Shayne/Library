@@ -1,0 +1,32 @@
+/* GLOBAL STYLES */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--spacing-small: 8px;
+	--spacing-medium: 16px;
+	--spacing-large: 44px;
+	--text-muted-color: rgba(0, 0, 0, 0.5);
+	--text-size-medium: 1.1rem;
+	--text-size-small: 0.8rem;
+	--text-size-heading: 3rem;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+p,
+span,
+button {
+	font-size: var(--text-size-medium);
+}
+
+h1 {
+	font-size: var(--text-size-heading);
+}
+
+/* HIGH-LEVEL-STYLES */
