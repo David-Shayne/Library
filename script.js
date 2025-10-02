@@ -127,6 +127,22 @@ booksContainerEle.addEventListener("click", (e) => {
 	}
 });
 
+function toggleModalVis() {
+	document.getElementById("new-book-modal").toggleAttribute("hide");
+}
+//Un-hide new book modal form
+let addBookBtnEle = document.getElementById("add-book-btn");
+addBookBtnEle.addEventListener("click", (e) => {
+	toggleModalVis();
+});
+
+//Close Modal
+let closeModalEle = document.getElementById("close-modal-btn");
+closeModalEle.addEventListener("click", (e) => {
+	toggleModalVis();
+});
+
+//Initial rendering of library books
 window.addEventListener("load", () => {
 	updateBookElements(myLibrary);
 });

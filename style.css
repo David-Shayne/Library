@@ -40,7 +40,7 @@ h1 {
 	font-size: var(--text-size-heading);
 }
 
-div[hide="true"] {
+div[hide] {
 	display: none;
 }
 
