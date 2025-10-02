@@ -34,7 +34,7 @@ addBookToLibrary(
 		"Fascism",
 		"Carl Marx",
 		"A book about the most notorious form of governmental control on this planet: fascism",
-		false,
+		true,
 	],
 	myLibrary
 );
