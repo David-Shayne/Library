@@ -7,11 +7,12 @@
 
 :root {
 	--spacing-small: 8px;
-	--spacing-medium: 16px;
-	--spacing-large: 44px;
+	--spacing-medium: 24px;
+	--spacing-large: 64px;
 	--text-muted-color: rgba(0, 0, 0, 0.5);
 	--text-size-medium: 1.1rem;
-	--text-size-small: 0.8rem;
+	--text-size-small: 0.9rem;
+	--text-size-large: 1.5rem;
 	--text-size-heading: 3rem;
 }
 
@@ -19,10 +20,23 @@ body {
 	font-family: sans-serif;
 }
 
-p,
 span,
 button {
 	font-size: var(--text-size-medium);
+}
+
+button {
+	border: none;
+	border-radius: 4px;
+	color: white;
+}
+
+.delete-btn {
+	background-color: maroon;
+}
+
+.toggle-read-btn {
+	background-color: darkcyan;
 }
 
 h1 {
@@ -30,3 +44,64 @@ h1 {
 }
 
 /* HIGH-LEVEL-STYLES */
+.container {
+	text-align: center;
+	padding: var(--spacing-large);
+	height: 100vh;
+}
+
+.books-container {
+	margin: 0 auto;
+	margin-top: var(--spacing-large);
+	max-width: 60vw;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: var(--spacing-large);
+}
+
+/* CARD STYLINGS */
+.book-card {
+	background-color: white;
+	padding: var(--spacing-medium);
+	border-radius: 8px;
+	box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+	margin-bottom: 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.title {
+	font-weight: 600;
+	font-size: var(--text-size-large);
+	text-align: start;
+}
+
+.is-read-display {
+	font-size: 0.75rem;
+	background-color: rgb(143, 255, 218);
+	padding: 6px var(--spacing-small);
+	border-radius: 8px;
+	width: max-content;
+}
+
+.desc {
+	font-size: var(--text-size-small);
+	color: var(--text-muted-color);
+	text-align: start;
+	margin-bottom: var(--spacing-medium);
+}
+
+.action-btns {
+	display: flex;
+	justify-content: space-between;
+
+	> button {
+		font-size: var(--text-size-small);
+		font-weight: 600;
+		padding: 8px var(--spacing-medium);
+	}
+}
