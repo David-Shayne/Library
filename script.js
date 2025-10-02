@@ -75,8 +75,9 @@ function createBookCardElement(book) {
 
 	let actionBtnsEle = createElement("div", "action-btns");
 	let deleteBtn = createElement("button", "delete-btn", "Delete");
-	deleteBtn.setAttribute("delete-id", book.id);
+	deleteBtn.setAttribute("book-id", book.id);
 	let toggleReadBtn = createElement("button", "toggle-read-btn", "Toggle Read");
+	toggleReadBtn.setAttribute("book-id", book.id);
 
 	actionBtnsEle.append(deleteBtn, toggleReadBtn);
 
@@ -102,17 +103,28 @@ function updateBookElements(library) {
 	});
 }
 
+function toggleIsRead(id, library) {
+	let bookIndex = library.findIndex((book) => book.id === id);
+	library[bookIndex].isRead = !library[bookIndex].isRead;
+
+	updateBookElements(library);
+}
+
 updateBookElements(myLibrary);
 
 //Delete button functionality
 booksContainerEle.addEventListener("click", (e) => {
-	if (!e.target.className === "delete-btn") {
-		return;
+	if (e.target.className === "delete-btn") {
+		//Remove the book from the library and update
+		let id = e.target.getAttribute("book-id");
+		deleteBook(id, myLibrary);
+		updateBookElements(myLibrary);
 	}
+});
 
-	//Remove the book from the library
-	let id = e.target.getAttribute("delete-id");
-	deleteBook(id, myLibrary);
-
-	updateBookElements(myLibrary);
+//Toggle read functionality
+booksContainerEle.addEventListener("click", (e) => {
+	if (e.target.className === "toggle-read-btn") {
+		toggleIsRead(e.target.getAttribute("book-id"), myLibrary);
+	}
 });
